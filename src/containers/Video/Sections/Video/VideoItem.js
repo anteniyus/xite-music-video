@@ -1,5 +1,6 @@
 import React from "react";
+import ImgMediaCard from "../../../../components/Card/ImgMediaCard";
 
-const VideoItem = () => <p>Video Item</p>;
+const VideoItem = () => <ImgMediaCard />;
 
 export default VideoItem;
