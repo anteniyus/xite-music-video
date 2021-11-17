@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
-import { updateVideos } from "../../../store/slice/VideoSlice";
+import { getVideosByPage, updatePage } from "../../../store/slice/VideoSlice";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -18,20 +18,24 @@ const useStyles = makeStyles((theme) => ({
 const SectionPagination = () => {
   const classes = useStyles();
 
-  const { data } = useSelector((state) => state.videos);
+  const { filteredData, page } = useSelector((state) => state.videos);
 
   const dispatch = useDispatch();
 
-  const handlePageChange = (offset) => dispatch(updateVideos(offset));
+  const handlePageChange = (currentPage) => {
+    dispatch(getVideosByPage({ offset: currentPage - 1 }));
+    dispatch(updatePage({ page: currentPage }));
+  };
 
   return (
     <Paper className={classes.paper}>
       <CustomPagination
         onChange={handlePageChange}
+        page={page}
         count={
-          data.length % 12 === 0
-            ? data.length / 12
-            : Math.floor(data.length / 12) + 1
+          filteredData.length % 12 === 0
+            ? filteredData.length / 12
+            : Math.floor(filteredData.length / 12) + 1
         }
       />
     </Paper>

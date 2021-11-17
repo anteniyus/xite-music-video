@@ -25,16 +25,14 @@ const SectionVideoItems = () => {
     isLoading ? (
       <VideoItemsSkeleton />
     ) : (
-      currentData
-        .slice(0, 12)
-        .map((item) => (
-          <VideoItem
-            key={uuidv4()}
-            imageURL={item.image_url}
-            artist={item.artist}
-            title={item.title}
-          />
-        ))
+      currentData.map((item) => (
+        <VideoItem
+          key={uuidv4()}
+          imageURL={item.image_url}
+          artist={item.artist}
+          title={item.title}
+        />
+      ))
     );
 
   return <Card className={classes.container}>{createUI()}</Card>;

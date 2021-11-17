@@ -12,23 +12,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CustomPagination = ({ onChange, count }) => {
+const CustomPagination = ({ onChange, count, page }) => {
   const classes = useStyles();
-  const [page, setPage] = React.useState(1);
 
   const theme = useTheme();
   const downSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleChange = (event, value) => {
-    setPage(value);
-
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
 
-    onChange({ offset: value - 1 });
+    onChange(value);
   };
 
   return (
@@ -47,6 +44,7 @@ const CustomPagination = ({ onChange, count }) => {
 CustomPagination.propTypes = {
   onChange: PropTypes.func.isRequired,
   count: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default CustomPagination;
