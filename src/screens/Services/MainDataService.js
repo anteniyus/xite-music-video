@@ -3,5 +3,7 @@ import { getMainDataURL } from "../../rest/URLs";
 
 const api = new RestAPI();
 
-export const getMainData = () =>
-  api.SendRequest("get", getMainDataURL(), {}).then((response) => response);
+export const GetMainData = () =>
+  api
+    .SendRequest("get", getMainDataURL(), {})
+    .then((response) => response.data);

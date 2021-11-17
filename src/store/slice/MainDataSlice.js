@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { GetMainData } from "../../screens/Services/MainDataService";
 
-export const getMainData = createAsyncThunk("mainData", () => getMainData());
+export const getMainData = createAsyncThunk("mainData", () => GetMainData());
 
 const mainDataSlice = createSlice({
   name: "mainData",

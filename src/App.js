@@ -1,16 +1,20 @@
 import React from "react";
 import "./App.css";
 import { CssBaseline } from "@mui/material";
+import { Provider } from "react-redux";
 import AppTheme from "./AppTheme";
 import ScreensRoot from "./screens/Root";
+import store from "./store/store";
 
 function App() {
   return (
-    <AppTheme>
-      <CssBaseline />
+    <Provider store={store}>
+      <AppTheme>
+        <CssBaseline />
 
-      <ScreensRoot />
-    </AppTheme>
+        <ScreensRoot />
+      </AppTheme>
+    </Provider>
   );
 }
 
