@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { CssBaseline } from "@mui/material";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { Provider } from "react-redux";
 import AppTheme from "./AppTheme";
 import ScreensRoot from "./screens/Root";
