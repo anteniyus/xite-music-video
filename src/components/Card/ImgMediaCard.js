@@ -49,8 +49,8 @@ const ImgMediaCard = ({ imageURL, title, body }) => {
 
 ImgMediaCard.propTypes = {
   imageURL: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  body: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default ImgMediaCard;

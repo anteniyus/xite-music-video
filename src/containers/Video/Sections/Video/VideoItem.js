@@ -8,8 +8,8 @@ const VideoItem = ({ imageURL, artist, title }) => (
 
 VideoItem.propTypes = {
   imageURL: PropTypes.string.isRequired,
-  artist: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  artist: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default VideoItem;

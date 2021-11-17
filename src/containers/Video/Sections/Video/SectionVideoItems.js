@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
 const SectionVideoItems = () => {
   const classes = useStyles();
 
-  const { isLoading, data } = useSelector((state) => state.videos);
+  const { isLoading, currentData } = useSelector((state) => state.videos);
 
   const createUI = () =>
     isLoading ? (
       <VideoItemsSkeleton />
     ) : (
-      data
+      currentData
         .slice(0, 12)
         .map((item) => (
           <VideoItem
