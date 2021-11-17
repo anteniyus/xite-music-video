@@ -1,14 +1,6 @@
 import React from "react";
-import SectionSearch from "./Sections/SectionSearch";
-import SectionVideoItems from "./Sections/SectionVideoItems";
-import SectionPagination from "./Sections/SectionPagination";
+import VideoList from "../../containers/Video/List";
 
-const VideoList = () => (
-  <>
-    <SectionSearch />
-    <SectionVideoItems />
-    <SectionPagination />
-  </>
-);
+const ScreensVideosList = () => <VideoList />;
 
-export default VideoList;
+export default ScreensVideosList;

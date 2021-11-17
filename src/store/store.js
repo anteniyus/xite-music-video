@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mainDataReducer from "./slice/MainDataSlice";
+import mainDataReducer from "./slice/VideoSlice";
 
 export default configureStore({
   reducer: {

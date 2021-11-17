@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GetMainData } from "../../screens/Services/MainDataService";
+import { GetVideos } from "../../containers/Video/Services/VideoService";
 
-export const getMainData = createAsyncThunk("mainData", () => GetMainData());
+export const getVideos = createAsyncThunk("videos", () => GetVideos());
 
-const mainDataSlice = createSlice({
+const videoSlice = createSlice({
   name: "mainData",
   initialState: {
     mainData: {},
@@ -11,16 +11,16 @@ const mainDataSlice = createSlice({
     error: null,
   },
   extraReducers: {
-    [getMainData.pending]: (state) => {
+    [getVideos.pending]: (state) => {
       state.mainData = {};
       state.isLoading = true;
       state.error = null;
     },
-    [getMainData.fulfilled]: (state, action) => {
+    [getVideos.fulfilled]: (state, action) => {
       state.mainData = action.payload;
       state.isLoading = false;
     },
-    [getMainData.rejected]: (state, action) => {
+    [getVideos.rejected]: (state, action) => {
       state.mainData = {};
       state.isLoading = false;
       state.error = action.error?.message;
@@ -28,4 +28,4 @@ const mainDataSlice = createSlice({
   },
 });
 
-export default mainDataSlice.reducer;
+export default videoSlice.reducer;

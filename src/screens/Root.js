@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import VideoList from "./Video/List";
+import ScreensVideosList from "./Video/List";
 
 const ScreensRoot = () => (
   <Router>
     <Switch>
-      <Route path="/" component={VideoList} exact />
+      <Route path="/" component={ScreensVideosList} exact />
 
       {/* Redirecting all not founded roots to Welcome Screen */}
-      <Route component={VideoList} />
+      <Route component={ScreensVideosList} />
     </Switch>
   </Router>
 );
