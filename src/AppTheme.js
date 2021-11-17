@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const AppTheme = ({ children }) => {
   const theme = createTheme({
     palette: {
-      mode: "dark",
+      type: "dark",
     },
     typography: {
       fontSize: 12,
