@@ -1,12 +1,39 @@
-import React, { useRef } from "react";
-import { Paper } from "@material-ui/core";
+import React, { useEffect, useRef, useState } from "react";
+import { Paper, TextField } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import CustomMultipleSelect from "../../../components/Select/CustomMultipleSelect";
 import { updateVideos } from "../../../store/slice/VideoSlice";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
+  formContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    alignItems: "center",
+    alignContent: "center",
+  },
+  textField: {
+    width: "80%",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
+    "@media (max-width:850px)": {
+      width: "98%",
+    },
+    "@media (max-width:720px)": {
+      width: "20rem",
+    },
+    "@media (max-width:400px)": {
+      width: "18rem !important",
+    },
+    "@media (max-width:300px)": {
+      width: "15rem !important",
+    },
+  },
+  paper: {
+    width: "100%",
     margin: theme.spacing(2),
     backgroundColor: theme.palette.background.default,
     boxShadow: "none",
@@ -29,6 +56,8 @@ const years = Array.from(
 const SectionSearchForm = () => {
   const classes = useStyles();
 
+  const [query, setQuery] = useState("");
+
   const genreRef = useRef();
   const yearRef = useRef();
 
@@ -36,40 +65,63 @@ const SectionSearchForm = () => {
 
   const dispatch = useDispatch();
 
+  const dispatchUpdateVideos = (filters) => dispatch(updateVideos(filters));
+
   const handleGenreChange = (selectedGenres) => {
-    dispatch(
-      updateVideos({
-        genres: selectedGenres,
-        years: yearRef.current.getValues(),
-      })
-    );
+    dispatchUpdateVideos({
+      genres: selectedGenres,
+      years: yearRef.current.getValues(),
+      query,
+    });
   };
 
   const handleYearChange = (selectedGenres) => {
-    dispatch(
-      updateVideos({
-        genres: genreRef.current.getValues(),
-        years: selectedGenres,
-      })
-    );
+    dispatchUpdateVideos({
+      genres: genreRef.current.getValues(),
+      years: selectedGenres,
+      query,
+    });
   };
 
+  const handleArtistChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  useEffect(() => {
+    dispatchUpdateVideos({
+      genres: genreRef.current.getValues(),
+      years: yearRef.current.getValues(),
+      query,
+    });
+  }, [query]);
+
   return (
-    <Paper className={classes.container}>
-      <CustomMultipleSelect
-        label="Genres"
-        items={genres}
-        onChange={handleGenreChange}
-        ref={genreRef}
+    <div className={classes.formContainer}>
+      <TextField
+        id="query"
+        label="Search"
+        placeholder="Enter Artist or Track Name"
+        className={classes.textField}
+        value={query}
+        onChange={handleArtistChange}
       />
 
-      <CustomMultipleSelect
-        label="Years"
-        items={years}
-        onChange={handleYearChange}
-        ref={yearRef}
-      />
-    </Paper>
+      <Paper className={classes.paper}>
+        <CustomMultipleSelect
+          label="Genres"
+          items={genres}
+          onChange={handleGenreChange}
+          ref={genreRef}
+        />
+
+        <CustomMultipleSelect
+          label="Years"
+          items={years}
+          onChange={handleYearChange}
+          ref={yearRef}
+        />
+      </Paper>
+    </div>
   );
 };
 
