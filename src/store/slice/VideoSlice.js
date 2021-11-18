@@ -5,12 +5,12 @@ const limit = 12;
 
 export const getVideos = createAsyncThunk("videos", () => GetVideos());
 
-const getFilteredData = (data, genres, year) =>
+const getFilteredData = (data, genres, years) =>
   data.filter((item) => {
     if (genres?.length > 0 && genres.indexOf(item.genre_id) === -1)
       return false;
 
-    return !(year && item.release_year !== year);
+    return !(years?.length > 0 && years.indexOf(item.release_year) === -1);
   });
 
 const videoSlice = createSlice({
@@ -32,7 +32,7 @@ const videoSlice = createSlice({
       const result = getFilteredData(
         state.data,
         action.payload.genres,
-        action.payload.year
+        action.payload.years
       );
 
       state.filteredData = result;

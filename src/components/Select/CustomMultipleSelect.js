@@ -1,8 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
 import PropTypes from "prop-types";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  Select,
+} from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { makeStyles } from "@material-ui/styles";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+// eslint-disable-next-line no-unused-vars
+const MenuProps = {
+  anchorOrigin: {
+    vertical: "bottom",
+    horizontal: "left",
+  },
+  transformOrigin: {
+    vertical: "top",
+    horizontal: "left",
+  },
+  getContentAnchorEl: () => null,
+  variant: "menu",
+  autoFocus: false,
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      maxWidth: 250,
+    },
+  },
+};
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -10,14 +45,17 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
   },
   select: {
-    maxWidth: "30rem",
-    [theme.breakpoints.up("xs")]: {
-      minWidth: "20rem",
+    width: "25rem",
+    // [theme.breakpoints.up("xs")]: {
+    //   minWidth: "20rem",
+    // },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "20rem",
     },
   },
 }));
 
-const CustomMultipleSelect = ({ label, items, onChange }) => {
+const CustomMultipleSelect = forwardRef(({ label, items, onChange }, ref) => {
   const classes = useStyles();
 
   const [value, setValue] = useState([]);
@@ -26,31 +64,45 @@ const CustomMultipleSelect = ({ label, items, onChange }) => {
     setValue(event.target.value);
   };
 
+  // To exposed to parent components
+  useImperativeHandle(ref, () => ({
+    getValues: () => value,
+  }));
+
   useEffect(() => {
     onChange(value);
   }, [value]);
 
+  const renderValue = (selected) =>
+    items
+      .filter((item) => selected.indexOf(item.id) !== -1)
+      .map((item) => item.name)
+      .join(", ");
+
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+      <InputLabel id="multiple-select-label">{label}</InputLabel>
 
       <Select
         value={value}
         onChange={handleChange}
         multiple
         className={classes.select}
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
+        labelId="multiple-select-label"
+        id="multiple-select"
+        renderValue={(selected) => renderValue(selected)}
+        MenuProps={MenuProps}
       >
         {items.map((item) => (
           <MenuItem key={uuidv4()} value={item.id}>
-            {item.name}
+            <Checkbox checked={value.indexOf(item.id) > -1} />
+            <ListItemText primary={item.name} />
           </MenuItem>
         ))}
       </Select>
     </FormControl>
   );
-};
+});
 
 CustomMultipleSelect.propTypes = {
   label: PropTypes.string.isRequired,
