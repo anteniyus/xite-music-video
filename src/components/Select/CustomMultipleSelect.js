@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
-// eslint-disable-next-line no-unused-vars
+
 const MenuProps = {
   anchorOrigin: {
     vertical: "bottom",
@@ -42,15 +42,17 @@ const MenuProps = {
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    [theme.breakpoints.down("xs")]: {
+      width: "auto",
+    },
   },
   select: {
-    width: "25rem",
-    // [theme.breakpoints.up("xs")]: {
-    //   minWidth: "20rem",
-    // },
-    [theme.breakpoints.down("xs")]: {
-      maxWidth: "20rem",
+    width: "20rem",
+    "@media (max-width:400px)": {
+      width: "18rem",
+    },
+    "@media (max-width:300px)": {
+      width: "15rem",
     },
   },
 }));

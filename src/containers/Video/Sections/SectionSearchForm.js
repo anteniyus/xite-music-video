@@ -11,8 +11,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     boxShadow: "none",
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-around",
-    [theme.breakpoints.down("md")]: {
+    alignContent: "center",
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       alignItems: "center",
     },
