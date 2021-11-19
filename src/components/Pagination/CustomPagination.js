@@ -36,6 +36,7 @@ const CustomPagination = ({ onChange, count, page }) => {
         onChange={handleChange}
         siblingCount={downSM ? 0 : 2}
         boundaryCount={1}
+        color="primary"
       />
     </div>
   );
