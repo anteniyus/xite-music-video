@@ -104,7 +104,7 @@ const SectionSearchForm = () => {
 
       <Paper className={classes.paper}>
         <CustomMultipleSelect
-          label="Genres"
+          label="Genre"
           items={genres}
           onChange={handleGenreChange}
           ref={genreRef}
