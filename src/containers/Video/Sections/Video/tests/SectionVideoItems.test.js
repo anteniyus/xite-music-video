@@ -40,8 +40,6 @@ describe("Section Video Items", () => {
       </Provider>
     );
 
-    screen.debug();
-
     expect(screen.getAllByRole("img")).toHaveLength(currentData.length);
   });
 });
