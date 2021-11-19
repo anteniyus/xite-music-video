@@ -8,7 +8,7 @@ import { testData } from "../../../../utility/testData";
 
 const mockStore = configureStore([]);
 
-describe("Search Form", () => {
+describe("Section Pagination", () => {
   let store;
   beforeEach(() => {
     store = mockStore({

@@ -7,7 +7,7 @@ import SectionSearchForm from "../SectionSearchForm";
 
 const mockStore = configureStore([]);
 
-describe("Search Form", () => {
+describe("Section Search Form", () => {
   let store;
   beforeEach(() => {
     store = mockStore({
