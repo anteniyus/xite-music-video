@@ -57,7 +57,7 @@ const VideoList = () => {
           variant: "error",
         });
     } else didMountRef.current = true;
-  }, error);
+  }, [error]);
 
   return (
     <Container>
