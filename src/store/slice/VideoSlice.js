@@ -46,7 +46,7 @@ const videoSlice = createSlice({
 
       state.page = 1;
     },
-    getVideosByPage(state, action) {
+    updateCurrentDataByOffset(state, action) {
       state.currentData = state.filteredData.slice(
         action.payload.offset * limit,
         (action.payload.offset + 1) * limit
@@ -92,6 +92,6 @@ const videoSlice = createSlice({
   },
 });
 
-export const { updateVideos, getVideosByPage } = videoSlice.actions;
+export const { updateVideos, updateCurrentDataByOffset } = videoSlice.actions;
 
 export default videoSlice.reducer;
