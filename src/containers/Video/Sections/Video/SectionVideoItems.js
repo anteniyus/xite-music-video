@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { useSelector } from "react-redux";
+import { useSnackbar } from "notistack";
 import VideoItem from "./VideoItem";
 import VideoItemsSkeleton from "./VideoItemsSkeleton";
 
@@ -24,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
 const SectionVideoItems = () => {
   const classes = useStyles();
 
+  const didMountRef = useRef(false);
+
   const { isLoading, currentData } = useSelector((state) => state.videos);
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const drawVideoItems = () => (
     <>
@@ -48,6 +53,15 @@ const SectionVideoItems = () => {
       <div className={classes.hideDiv} />
     </>
   );
+
+  useEffect(() => {
+    if (didMountRef.current) {
+      if (!currentData?.length)
+        enqueueSnackbar("Nothing Found!", {
+          variant: "info",
+        });
+    } else didMountRef.current = true;
+  }, [JSON.stringify(currentData)]);
 
   const createUI = () =>
     isLoading ? <VideoItemsSkeleton /> : drawVideoItems();
