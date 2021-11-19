@@ -3,12 +3,17 @@ import PropTypes from "prop-types";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { SnackbarProvider } from "notistack";
 import Slide from "@material-ui/core/Slide";
+import { Colors } from "./constants/ColorPalette";
 
 const AppTheme = ({ children }) => {
   const theme = createTheme({
     palette: {
       type: "dark",
+      primary: {
+        main: Colors.CYAN,
+      },
     },
+
     typography: {
       fontSize: 12,
     },
