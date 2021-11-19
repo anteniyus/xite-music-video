@@ -4,11 +4,16 @@ import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import AppTheme from "../../../../AppTheme";
 import SectionSearchForm from "../SectionSearchForm";
+import {
+  checkConsoleSpyOnResult,
+  makeSpyOnConsole,
+} from "../../../../utility/ConsoleTestUtitlity";
 
 const mockStore = configureStore([]);
 
 describe("Section Search Form", () => {
   let store;
+
   beforeEach(() => {
     store = mockStore({
       videos: {
@@ -26,6 +31,14 @@ describe("Section Search Form", () => {
     });
 
     store.dispatch = jest.fn();
+  });
+
+  beforeEach(() => {
+    makeSpyOnConsole();
+  });
+
+  afterEach(() => {
+    checkConsoleSpyOnResult();
   });
 
   test("Checks the DOMs", () => {

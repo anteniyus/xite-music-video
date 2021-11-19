@@ -5,12 +5,17 @@ import { Provider } from "react-redux";
 import SectionVideoItems from "../SectionVideoItems";
 import { testData } from "../../../../../utility/testData";
 import AppTheme from "../../../../../AppTheme";
+import {
+  checkConsoleSpyOnResult,
+  makeSpyOnConsole,
+} from "../../../../../utility/ConsoleTestUtitlity";
 
 const mockStore = configureStore([]);
 const currentData = testData.videos.slice(0, 12);
 
 describe("Section Video Items", () => {
   let store;
+
   beforeEach(() => {
     store = mockStore({
       videos: {
@@ -29,6 +34,14 @@ describe("Section Video Items", () => {
 
     store.dispatch = jest.fn();
     window.scrollTo = jest.fn();
+  });
+
+  beforeEach(() => {
+    makeSpyOnConsole();
+  });
+
+  afterEach(() => {
+    checkConsoleSpyOnResult();
   });
 
   test("Checks the DOMs", () => {

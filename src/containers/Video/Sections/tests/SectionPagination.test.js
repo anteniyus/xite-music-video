@@ -5,11 +5,16 @@ import { Provider } from "react-redux";
 import AppTheme from "../../../../AppTheme";
 import SectionPagination from "../SectionPagination";
 import { testData } from "../../../../utility/testData";
+import {
+  checkConsoleSpyOnResult,
+  makeSpyOnConsole,
+} from "../../../../utility/ConsoleTestUtitlity";
 
 const mockStore = configureStore([]);
 
 describe("Section Pagination", () => {
   let store;
+
   beforeEach(() => {
     store = mockStore({
       videos: {
@@ -28,6 +33,14 @@ describe("Section Pagination", () => {
 
     store.dispatch = jest.fn();
     window.scrollTo = jest.fn();
+  });
+
+  beforeEach(() => {
+    makeSpyOnConsole();
+  });
+
+  afterEach(() => {
+    checkConsoleSpyOnResult();
   });
 
   test("Checks the DOMs", () => {

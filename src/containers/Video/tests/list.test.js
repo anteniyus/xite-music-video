@@ -4,6 +4,10 @@ import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import VideoList from "../List";
 import AppTheme from "../../../AppTheme";
+import {
+  checkConsoleSpyOnResult,
+  makeSpyOnConsole,
+} from "../../../utility/ConsoleTestUtitlity";
 
 const initialState = {
   genres: [],
@@ -22,10 +26,19 @@ const mockStore = configureStore([]);
 
 describe("Section Pagination", () => {
   let store;
+
   beforeEach(() => {
     store = mockStore({ videos: initialState });
 
     store.dispatch = jest.fn();
+  });
+
+  beforeEach(() => {
+    makeSpyOnConsole();
+  });
+
+  afterEach(() => {
+    checkConsoleSpyOnResult();
   });
 
   test("Checks the DOMs", () => {
