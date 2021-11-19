@@ -97,7 +97,7 @@ const CustomMultipleSelect = forwardRef(({ label, items, onChange }, ref) => {
       >
         {items.map((item) => (
           <MenuItem key={uuidv4()} value={item.id}>
-            <Checkbox checked={value.indexOf(item.id) > -1} />
+            <Checkbox checked={value.indexOf(item.id) > -1} color="primary" />
             <ListItemText primary={item.name} />
           </MenuItem>
         ))}
