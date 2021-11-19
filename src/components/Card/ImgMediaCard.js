@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     width: 350,
     margin: ".5rem",
     boxShadow: "none",
+    boxSizing: "border-box",
   },
   image: {
     objectFit: "contain",
