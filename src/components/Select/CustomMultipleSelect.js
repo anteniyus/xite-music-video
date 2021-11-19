@@ -24,11 +24,7 @@ const MenuProps = {
     vertical: "bottom",
     horizontal: "left",
   },
-  transformOrigin: {
-    vertical: "top",
-    horizontal: "left",
-  },
-  getContentAnchorEl: () => null,
+  getContentAnchorEl: null,
   variant: "menu",
   autoFocus: false,
   PaperProps: {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import CustomMultipleSelect from "../../../components/Select/CustomMultipleSelect";
 import { updateVideos } from "../../../store/slice/VideoSlice";
+import CustomDecadeSelect from "../../../components/Select/CustomDecadeSelect";
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
@@ -48,11 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const years = Array.from(
-  new Array(72),
-  (val, index) => new Date().getFullYear() - index
-).map((year) => ({ id: year, name: year }));
-
 const SectionSearchForm = () => {
   const classes = useStyles();
 
@@ -70,15 +66,15 @@ const SectionSearchForm = () => {
   const handleGenreChange = (selectedGenres) => {
     dispatchUpdateVideos({
       genres: selectedGenres,
-      years: yearRef.current.getValues(),
+      years: yearRef.current.getYears(),
       query,
     });
   };
 
-  const handleYearChange = (selectedGenres) => {
+  const handleYearChange = (selectedYears) => {
     dispatchUpdateVideos({
       genres: genreRef.current.getValues(),
-      years: selectedGenres,
+      years: selectedYears,
       query,
     });
   };
@@ -90,7 +86,7 @@ const SectionSearchForm = () => {
   useEffect(() => {
     dispatchUpdateVideos({
       genres: genreRef.current.getValues(),
-      years: yearRef.current.getValues(),
+      years: yearRef.current.getYears(),
       query,
     });
   }, [query]);
@@ -114,12 +110,7 @@ const SectionSearchForm = () => {
           ref={genreRef}
         />
 
-        <CustomMultipleSelect
-          label="Years"
-          items={years}
-          onChange={handleYearChange}
-          ref={yearRef}
-        />
+        <CustomDecadeSelect onChange={handleYearChange} ref={yearRef} />
       </Paper>
     </div>
   );
