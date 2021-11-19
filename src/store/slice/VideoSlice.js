@@ -51,9 +51,8 @@ const videoSlice = createSlice({
         action.payload.offset * limit,
         (action.payload.offset + 1) * limit
       );
-    },
-    updatePage(state, action) {
-      state.page = action.payload.page;
+
+      state.page = action.payload.offset + 1;
     },
   },
   extraReducers: {
@@ -93,6 +92,6 @@ const videoSlice = createSlice({
   },
 });
 
-export const { updateVideos, getVideosByPage, updatePage } = videoSlice.actions;
+export const { updateVideos, getVideosByPage } = videoSlice.actions;
 
 export default videoSlice.reducer;

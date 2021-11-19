@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
-import { getVideosByPage, updatePage } from "../../../store/slice/VideoSlice";
+import { getVideosByPage } from "../../../store/slice/VideoSlice";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,7 +24,6 @@ const SectionPagination = () => {
 
   const handlePageChange = (currentPage) => {
     dispatch(getVideosByPage({ offset: currentPage - 1 }));
-    dispatch(updatePage({ page: currentPage }));
   };
 
   return (
