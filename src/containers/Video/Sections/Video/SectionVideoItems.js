@@ -31,7 +31,7 @@ const SectionVideoItems = () => {
 
   const { enqueueSnackbar } = useSnackbar();
 
-  const drawVideoItems = () => (
+  const drawVideoItems = (
     <>
       {currentData.map((item) => (
         <VideoItem
@@ -63,8 +63,7 @@ const SectionVideoItems = () => {
     } else didMountRef.current = true;
   }, [JSON.stringify(currentData)]);
 
-  const createUI = () =>
-    isLoading ? <VideoItemsSkeleton /> : drawVideoItems();
+  const createUI = () => (isLoading ? <VideoItemsSkeleton /> : drawVideoItems);
 
   return <Card className={classes.container}>{createUI()}</Card>;
 };

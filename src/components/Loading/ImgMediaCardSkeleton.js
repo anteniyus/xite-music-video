@@ -4,7 +4,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 
 const ImgMediaCardSkeleton = () => (
   <Box margin={0.6}>
-    <Skeleton variant="rect" width={400} height={250} />
+    <Skeleton variant="rect" width={350} height={250} />
 
     <Box pt={0.5}>
       <Skeleton />
