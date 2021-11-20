@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import CustomMultipleSelect from "../../../components/Select/CustomMultipleSelect";
 import { updateVideos } from "../../../store/slice/VideoSlice";
 import CustomDecadeSelect from "../../../components/Select/CustomDecadeSelect";
+import settings from "../../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
@@ -95,8 +96,10 @@ const SectionSearchForm = () => {
     <div className={classes.formContainer}>
       <TextField
         id="query"
-        label="Search"
-        placeholder="Enter Artist or Track Name"
+        label={settings.messages.sectionSearchForm.SEARCH_INPUT_LABEL}
+        placeholder={
+          settings.messages.sectionSearchForm.SEARCH_INPUT_PLACEHOLDER
+        }
         className={classes.textField}
         value={query}
         onChange={handleArtistChange}
@@ -104,7 +107,7 @@ const SectionSearchForm = () => {
 
       <Paper className={classes.paper}>
         <CustomMultipleSelect
-          label="Genre"
+          label={settings.messages.sectionSearchForm.GENRE_SELECT_LABEL}
           items={genres}
           onChange={handleGenreChange}
           ref={genreRef}

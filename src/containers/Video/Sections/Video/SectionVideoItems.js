@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
 import VideoItem from "./VideoItem";
 import VideoItemsSkeleton from "./VideoItemsSkeleton";
+import settings from "../../../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -57,7 +58,7 @@ const SectionVideoItems = () => {
   useEffect(() => {
     if (didMountRef.current) {
       if (!currentData?.length)
-        enqueueSnackbar("Nothing Found!", {
+        enqueueSnackbar(settings.messages.general.NOT_FOUND, {
           variant: "info",
         });
     } else didMountRef.current = true;

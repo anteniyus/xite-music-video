@@ -9,6 +9,7 @@ import SectionVideoItems from "./Sections/Video/SectionVideoItems";
 import SectionPagination from "./Sections/SectionPagination";
 import { getVideos } from "../../store/slice/VideoSlice";
 import Container from "../../components/Card/Container";
+import settings from "../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   buttonContainer: {
@@ -41,7 +42,7 @@ const VideoList = () => {
         startIcon={<RefreshIcon />}
         onClick={() => dispatch(getVideos())}
       >
-        Retry
+        {settings.messages.videoList.RETRY_BUTTON}
       </Button>
     </div>
   );

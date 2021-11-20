@@ -1,5 +1,18 @@
 {
   "configs": {
     "ITEM_PER_PAGE": 12
+  },
+  "messages": {
+    "videoList": {
+      "RETRY_BUTTON":"Retry"
+    },
+    "sectionSearchForm": {
+      "SEARCH_INPUT_LABEL": "Search",
+      "SEARCH_INPUT_PLACEHOLDER": "Enter Artist or Track Name",
+      "GENRE_SELECT_LABEL": "Genre"
+    },
+    "general": {
+      "NOT_FOUND": "Nothing Found!"
+    }
   }
 }
