@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { makeStyles } from "@material-ui/styles";
+import { isFunction } from "../../utility/Validator";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -68,7 +69,7 @@ const CustomMultipleSelect = forwardRef(({ label, items, onChange }, ref) => {
   }));
 
   useEffect(() => {
-    onChange(value);
+    if (isFunction(onChange)) onChange(value);
   }, [value]);
 
   const renderValue = (selected) =>

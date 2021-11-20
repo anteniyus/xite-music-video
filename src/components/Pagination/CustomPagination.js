@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
+import { isFunction } from "../../utility/Validator";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const CustomPagination = ({ onChange, count, page }) => {
       behavior: "smooth",
     });
 
-    onChange(value);
+    if (isFunction(onChange)) onChange(value);
   };
 
   return (

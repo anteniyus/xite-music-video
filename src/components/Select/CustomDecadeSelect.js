@@ -8,6 +8,7 @@ import React, {
 import PropTypes from "prop-types";
 import CustomMultipleSelect from "./CustomMultipleSelect";
 import { decades, decadesYearsMapping } from "../../constants/Decades";
+import { isFunction } from "../../utility/Validator";
 
 const CustomDecadeSelect = forwardRef(({ onChange }, ref) => {
   const selectRef = useRef();
@@ -32,7 +33,7 @@ const CustomDecadeSelect = forwardRef(({ onChange }, ref) => {
   };
 
   useEffect(() => {
-    onChange(years);
+    if (isFunction(onChange)) onChange(years);
   }, [JSON.stringify(years)]);
 
   return (
