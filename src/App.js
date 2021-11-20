@@ -5,16 +5,19 @@ import { Provider } from "react-redux";
 import AppTheme from "./AppTheme";
 import ScreensRoot from "./screens/Root";
 import store from "./store/store";
+import ErrorBoundary from "./components/Error/ErrorBoundary";
 
 function App() {
   return (
-    <Provider store={store}>
-      <AppTheme>
-        <CssBaseline />
+    <ErrorBoundary>
+      <Provider store={store}>
+        <AppTheme>
+          <CssBaseline />
 
-        <ScreensRoot />
-      </AppTheme>
-    </Provider>
+          <ScreensRoot />
+        </AppTheme>
+      </Provider>
+    </ErrorBoundary>
   );
 }
 
