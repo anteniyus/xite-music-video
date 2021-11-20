@@ -9,9 +9,10 @@ import {
   checkConsoleSpyOnResult,
   makeSpyOnConsole,
 } from "../../../../../utility/ConsoleTestUtitlity";
+import settings from "../../../../../settings.json";
 
 const mockStore = configureStore([]);
-const currentData = testData.videos.slice(0, 12);
+const currentData = testData.videos.slice(0, settings.configs.ITEM_PER_PAGE);
 
 describe("Section Video Items", () => {
   let store;

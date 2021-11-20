@@ -4,6 +4,7 @@ import videoReducer, {
   updateVideos,
 } from "../VideoSlice";
 import { testData } from "../../../utility/testData";
+import settings from "../../../settings.json";
 
 const initialState = {
   genres: [],
@@ -42,7 +43,7 @@ describe("Video Slice", () => {
 
       data: testData.videos,
       filteredData: testData.videos,
-      currentData: testData.videos.slice(0, 12),
+      currentData: testData.videos.slice(0, settings.configs.ITEM_PER_PAGE),
 
       page: 1,
 
@@ -115,14 +116,18 @@ describe("Video Slice", () => {
       videoReducer(
         filledState,
         updateCurrentDataByOffset({
-          offset: Math.floor(testData.videos.length / 12),
+          offset: Math.floor(
+            testData.videos.length / settings.configs.ITEM_PER_PAGE
+          ),
         })
       )
     ).toEqual({
       ...filledState,
-      page: Math.floor(testData.videos.length / 12) + 1,
+      page:
+        Math.floor(testData.videos.length / settings.configs.ITEM_PER_PAGE) + 1,
       currentData: testData.videos.slice(
-        Math.floor(testData.videos.length / 12) * 12
+        Math.floor(testData.videos.length / settings.configs.ITEM_PER_PAGE) *
+          settings.configs.ITEM_PER_PAGE
       ),
     });
   });

@@ -9,6 +9,7 @@ import {
   checkConsoleSpyOnResult,
   makeSpyOnConsole,
 } from "../../../../utility/ConsoleTestUtitlity";
+import settings from "../../../../settings.json";
 
 const mockStore = configureStore([]);
 
@@ -82,9 +83,10 @@ describe("Section Pagination", () => {
     );
 
     const count =
-      testData.videos.length % 12 === 0
-        ? testData.videos.length / 12
-        : Math.floor(testData.videos.length / 12) + 1;
+      testData.videos.length % settings.configs.ITEM_PER_PAGE === 0
+        ? testData.videos.length / settings.configs.ITEM_PER_PAGE
+        : Math.floor(testData.videos.length / settings.configs.ITEM_PER_PAGE) +
+          1;
 
     for (let i = 1; i < count + 1; i++) {
       expect(screen.getByText(i)).toBeInTheDocument();

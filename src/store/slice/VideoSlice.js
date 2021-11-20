@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GetVideos } from "../../containers/Video/Services/VideoService";
+import settings from "../../settings.json";
 
-const limit = 12;
+const limit = settings.configs.ITEM_PER_PAGE;
 
 export const getVideos = createAsyncThunk("videos", () => GetVideos());
 

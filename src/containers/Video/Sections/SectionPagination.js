@@ -4,6 +4,7 @@ import { Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import CustomPagination from "../../../components/Pagination/CustomPagination";
 import { updateCurrentDataByOffset } from "../../../store/slice/VideoSlice";
+import settings from "../../../settings.json";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,9 +33,10 @@ const SectionPagination = () => {
         onChange={handlePageChange}
         page={page}
         count={
-          filteredData.length % 12 === 0
-            ? filteredData.length / 12
-            : Math.floor(filteredData.length / 12) + 1
+          filteredData.length % settings.configs.ITEM_PER_PAGE === 0
+            ? filteredData.length / settings.configs.ITEM_PER_PAGE
+            : Math.floor(filteredData.length / settings.configs.ITEM_PER_PAGE) +
+              1
         }
       />
     </Paper>
