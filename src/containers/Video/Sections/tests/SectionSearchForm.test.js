@@ -51,8 +51,8 @@ describe("Section Search Form", () => {
     );
 
     expect(screen.getByText("Search")).toBeInTheDocument();
-    expect(screen.getByText("Genres")).toBeInTheDocument();
-    expect(screen.getByText("Years")).toBeInTheDocument();
+    expect(screen.getByText("Genre")).toBeInTheDocument();
+    expect(screen.getByText("Decade")).toBeInTheDocument();
   });
 
   test("Checks the search value", () => {

@@ -33,7 +33,7 @@ const CustomDecadeSelect = forwardRef(({ onChange }, ref) => {
 
   useEffect(() => {
     onChange(years);
-  }, [years]);
+  }, [JSON.stringify(years)]);
 
   return (
     <CustomMultipleSelect

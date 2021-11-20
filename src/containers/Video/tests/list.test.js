@@ -51,8 +51,8 @@ describe("Section Pagination", () => {
     );
 
     expect(screen.getByText("Search")).toBeInTheDocument();
-    expect(screen.getByText("Genres")).toBeInTheDocument();
-    expect(screen.getByText("Years")).toBeInTheDocument();
+    expect(screen.getByText("Genre")).toBeInTheDocument();
+    expect(screen.getByText("Decade")).toBeInTheDocument();
     expect(screen.getByLabelText("Go to next page")).toBeInTheDocument();
     expect(screen.getByLabelText("Go to previous page")).toBeInTheDocument();
   });
@@ -72,8 +72,8 @@ describe("Section Pagination", () => {
     expect(screen.getByText("Retry")).toBeInTheDocument();
 
     expect(screen.getByText("Search")).toBeInTheDocument();
-    expect(screen.getByText("Genres")).toBeInTheDocument();
-    expect(screen.getByText("Years")).toBeInTheDocument();
+    expect(screen.getByText("Genre")).toBeInTheDocument();
+    expect(screen.getByText("Decade")).toBeInTheDocument();
 
     expect(screen.queryByLabelText("Go to next page")).toBeNull();
     expect(screen.queryByLabelText("Go to previous page")).toBeNull();
