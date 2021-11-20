@@ -23,7 +23,7 @@ The main URL of the application is:
 
 ## Building
 
-Building The Click the Fox! Game requires the following tools:
+Building The XITE Music Video Application requires the following tools:
 
 - Git (obviously)
 - Node.js
