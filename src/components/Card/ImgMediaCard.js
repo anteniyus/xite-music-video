@@ -18,6 +18,14 @@ const useStyles = makeStyles({
     objectFit: "contain",
     objectPosition: "top",
   },
+  multiLineEllipsis: {
+    display: "-webkit-box",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    "-webkit-line-clamp": 2,
+    "-webkit-box-orient": "vertical",
+    whiteSpace: "normal",
+  },
 });
 
 const ImgMediaCard = ({ imageURL, title, body }) => {
@@ -34,12 +42,24 @@ const ImgMediaCard = ({ imageURL, title, body }) => {
           title={title}
           className={classes.image}
         />
-
+        {/* Here it could be possible to use styled-component to create
+            a styled Ellipsis Typography component instead of passing class
+        */}
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            className={classes.multiLineEllipsis}
+          >
             {title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={classes.multiLineEllipsis}
+          >
             {body}
           </Typography>
         </CardContent>
