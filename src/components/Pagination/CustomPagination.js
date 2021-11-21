@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
+import smoothscroll from "smoothscroll-polyfill";
 import { isFunction } from "../../utility/Validator";
+
+smoothscroll.polyfill();
 
 const useStyles = makeStyles((theme) => ({
   root: {
