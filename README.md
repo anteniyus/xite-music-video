@@ -117,6 +117,6 @@ The application is accessible from the following location:
 
 **Mobile**
 
-![Demo](https://user-images.githubusercontent.com/4962803/142740033-06564e00-dbca-40d7-9bab-a69b1333c398.PNG)
-![Demo](https://user-images.githubusercontent.com/4962803/142740054-cdf5a27f-7aa5-4646-84d7-77c83700b261.PNG)
-![Demo](https://user-images.githubusercontent.com/4962803/142741406-7d0bcf6b-5277-4d4a-9789-9f8824c35f66.png)
+![Demo](https://user-images.githubusercontent.com/4962803/142768219-721318e0-3ab1-427b-97b4-bd7adc9ec41d.png)
+![Demo](https://user-images.githubusercontent.com/4962803/142768242-07b107d2-7586-4d5b-9d81-d0c974e8186f.png)
+![Demo](https://user-images.githubusercontent.com/4962803/142768254-edc5bcda-5e73-4586-96f3-5dc8119c7f93.jpeg)
