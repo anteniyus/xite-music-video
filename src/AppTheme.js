@@ -13,7 +13,6 @@ const AppTheme = ({ children }) => {
         main: Colors.CYAN,
       },
     },
-
     typography: {
       fontSize: 12,
     },
@@ -27,7 +26,10 @@ const AppTheme = ({ children }) => {
           horizontal: "center",
         }}
         TransitionComponent={Slide}
-        maxSnack={3}
+        maxSnack={2}
+        preventDuplicate
+        disableWindowBlurListener
+        autoHideDuration={2000}
       >
         {children}
       </SnackbarProvider>

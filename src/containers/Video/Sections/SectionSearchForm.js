@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "center",
   },
   textField: {
+    caretColor: theme.palette.primary.main,
     width: "80%",
     [theme.breakpoints.down("md")]: {
       width: "90%",
